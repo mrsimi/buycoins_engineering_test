@@ -1,6 +1,7 @@
 # buycoins_engineering_test
 
 Deployed Url: http://buycoinstest.azurewebsites.net/graphql
+
 Postman Documentation: https://documenter.getpostman.com/view/11187475/UVksKtb9 
 
 ## What's a good reason why the pure Levenshtein Distance algorithm might be a more effective solution than the broader Damerau–Levenshtein Distance algorithm in this specific scenario.
@@ -15,5 +16,6 @@ The Levenshtein Distance (LD) and the Damerau-Levenshtein Distance (DLD) algorit
 ## Project Structure and Setup: 
 
 buycoins_test: Houses the who code built on asp.net Core 6.0 and can be ran locally 
+
 buycoins_test.Tests: houses the integration test build using the xunit test and can also be ran locally. 
 
