@@ -1,0 +1,14 @@
+﻿{
+  "Label": null,
+  "Path": null,
+  "Data": {
+    "verifyBankInformation": {
+      "accountName": "",
+      "statusCode": 422
+    }
+  },
+  "Errors": null,
+  "Extensions": null,
+  "ContextData": null,
+  "HasNext": null
+}

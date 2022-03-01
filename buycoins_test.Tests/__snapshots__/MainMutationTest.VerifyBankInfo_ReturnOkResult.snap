@@ -1,0 +1,14 @@
+﻿{
+  "Label": null,
+  "Path": null,
+  "Data": {
+    "verifyBankInformation": {
+      "accountName": "Adegoke Similoluwa Matthias",
+      "statusCode": 200
+    }
+  },
+  "Errors": null,
+  "Extensions": null,
+  "ContextData": null,
+  "HasNext": null
+}

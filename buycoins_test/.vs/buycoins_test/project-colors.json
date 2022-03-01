@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "c42d7a80-d046-439c-982b-5a4e12beadd5": {
+      "ProjectGuid": "c42d7a80-d046-439c-982b-5a4e12beadd5",
+      "DisplayName": "buycoins_test.Tests",
+      "ColorIndex": 0
+    },
+    "8459f3a4-9206-4342-9367-3be05852091c": {
+      "ProjectGuid": "8459f3a4-9206-4342-9367-3be05852091c",
+      "DisplayName": "buycoins_test",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
