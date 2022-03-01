@@ -1,11 +1,13 @@
 ﻿using buycoins_test.Mutations;
 using HotChocolate;
 using HotChocolate.Execution;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using Snapshooter.Xunit;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +21,19 @@ namespace buycoins_test.Tests
         [Fact]
         public async Task VerifyBankInfo_ReturnOkResult()
         {
-           
-            var executor = await new ServiceCollection()
+
+            var serviceCollection = new ServiceCollection();
+
+            var configuration = new ConfigurationBuilder()
+                   .SetBasePath(Directory.GetCurrentDirectory())
+                   .AddJsonFile(
+                        path: "appsettings.json",
+                        optional: false,
+                        reloadOnChange: true)
+                  .Build();
+            serviceCollection.AddSingleton<IConfiguration>(configuration);
+
+            var executor = await serviceCollection
                    .AddGraphQLServer()
                    .ConfigureSchema(sb => sb.ModifyOptions(opts => opts.StrictValidation = false))
                    .AddMutationType<MainMutation>()
@@ -51,7 +64,18 @@ namespace buycoins_test.Tests
         [Fact]
         public async Task VerifyBankInfo_WithLDGreaterThan2_Return409()
         {
-            var executor = await new ServiceCollection()
+            var serviceCollection = new ServiceCollection();
+
+            var configuration = new ConfigurationBuilder()
+                   .SetBasePath(Directory.GetCurrentDirectory())
+                   .AddJsonFile(
+                        path: "appsettings.json",
+                        optional: false,
+                        reloadOnChange: true)
+                  .Build();
+            serviceCollection.AddSingleton<IConfiguration>(configuration);
+
+            var executor = await serviceCollection
                    .AddGraphQLServer()
                    .ConfigureSchema(sb => sb.ModifyOptions(opts => opts.StrictValidation = false))
                    .AddMutationType<MainMutation>()
@@ -82,8 +106,19 @@ namespace buycoins_test.Tests
         [Fact]
         public async Task VerifyBankInfo_InvalidAccountNumber_Return422()
         {
-           
-            var executor = await new ServiceCollection()
+
+            var serviceCollection = new ServiceCollection();
+
+            var configuration = new ConfigurationBuilder()
+                   .SetBasePath(Directory.GetCurrentDirectory())
+                   .AddJsonFile(
+                        path: "appsettings.json",
+                        optional: false,
+                        reloadOnChange: true)
+                  .Build();
+            serviceCollection.AddSingleton<IConfiguration>(configuration);
+
+            var executor = await serviceCollection
                    .AddGraphQLServer()
                    .ConfigureSchema(sb => sb.ModifyOptions(opts => opts.StrictValidation = false))
                    .AddMutationType<MainMutation>()

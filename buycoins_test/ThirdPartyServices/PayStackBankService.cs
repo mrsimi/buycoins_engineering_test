@@ -13,8 +13,8 @@ namespace buycoins_test.ThirdPartyServices
         public PayStackBankService(IConfiguration configuration)
         {
             _configuration = configuration;
-            SecretKey = "sk_test_0a6d5014a3018bef4bee163e38d973e4998b156e"; //_configuration.GetSection("Paystack:BankResolveUrl").Value;
-            PaystackBankResolveUrl = "https://api.paystack.co/bank/resolve?account_number={0}&bank_code={1}";  //_configuration.GetSection("Paystack:TestSecretKey").Value;
+            PaystackBankResolveUrl  = _configuration.GetSection("Paystack:BankResolveUrl").Value;
+            SecretKey = _configuration.GetSection("Paystack:TestSecretKey").Value;
         }   
         public async Task<PaystackResolveBankInfoResponse> ResolveUserBankInfo(BankInfoRequest request)
         {

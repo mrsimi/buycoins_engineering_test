@@ -2,10 +2,12 @@
 using buycoins_test.Queries;
 using HotChocolate;
 using HotChocolate.Execution;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using Snapshooter.Xunit;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -13,35 +15,22 @@ namespace buycoins_test.Tests
 {
     public class MainQueryTest
     {
-        [Fact]
-        public async Task Test1()
-        {
-            var executor = await new ServiceCollection()
-                    .AddGraphQLServer()
-                    .AddQueryType<MainQuery>()
-                    .BuildRequestExecutorAsync();
-
-            var query = QueryRequestBuilder.New()
-                    .SetQuery(" query{ userBankInfo { accountName} }")
-                    .Create();
-
-            IExecutionResult result = await executor.ExecuteAsync(query);
-
-            //assert
-            Assert.Null(result.Errors);
-            var jsonResult = JObject.Parse(result.ToJson());
-
-            var accountName = jsonResult["data"]["userBankInfo"]["accountName"]?.ToString();
-
-
-            result.MatchSnapshot();
-        }
-
+       
         [Fact]
         public async Task GetUserAccountName_ReturnsOk()
         {
+            var serviceCollection = new ServiceCollection();
 
-            var executor = await new ServiceCollection()
+            var configuration = new ConfigurationBuilder()
+                   .SetBasePath(Directory.GetCurrentDirectory())
+                   .AddJsonFile(
+                        path: "appsettings.json",
+                        optional: false,
+                        reloadOnChange: true)
+                  .Build();
+            serviceCollection.AddSingleton<IConfiguration>(configuration);
+
+            var executor = await serviceCollection
                     .AddGraphQLServer()
                     .AddQueryType<MainQuery>()
                     .BuildRequestExecutorAsync();
