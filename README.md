@@ -15,7 +15,7 @@ The Levenshtein Distance (LD) and the Damerau-Levenshtein Distance (DLD) algorit
 
 ## Project Structure and Setup: 
 
-buycoins_test: Houses the who code built on asp.net Core 6.0 and can be ran locally 
+buycoins_test: Houses the code built on asp.net Core 6.0 and can be ran locally 
 
 buycoins_test.Tests: houses the integration test build using the xunit test and can also be ran locally. 
 
